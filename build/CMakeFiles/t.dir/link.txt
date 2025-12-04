@@ -1,0 +1,1 @@
+/usr/bin/aarch64-linux-gnu-g++ CMakeFiles/t.dir/main.cpp.o CMakeFiles/t.dir/serialController.cpp.o -o t  -lpthread 
