@@ -1,3 +1,0 @@
-/home/steppers/build/CMakeFiles/t.dir
-/home/steppers/build/CMakeFiles/edit_cache.dir
-/home/steppers/build/CMakeFiles/rebuild_cache.dir
