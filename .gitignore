@@ -1,2 +1,5 @@
 build/
 t
+
+ssh-copy-id root@10.0.0.53
+ssh-copy-id root@10.0.0.53.pub

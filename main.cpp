@@ -16,14 +16,16 @@ float deg_to_mm(float deg) {
     return mm;
 }
 
-void blocking_move_deg(float x, float y, float z, float speed_mm_s, float acel_mm_s_2) {
+void blocking_move_deg(float x, float y, float z, float a, float b, float speed_mm_s, float acel_mm_s_2) {
     x = deg_to_mm(x);
     y = deg_to_mm(y);
     z = deg_to_mm(z);
+    a = deg_to_mm(a);
+    b = deg_to_mm(b);
 
     float speed_mm_m = speed_mm_s * 60.0f;
-    std::string move_gcode = std::format("G1 X{:.3f} Y{:.3f} Z{:.3f} F{:.0f}", 
-                                         x, y, z, speed_mm_m);
+    std::string move_gcode = std::format("G1 X{:.3f} Y{:.3f} Z{:.3f} A{:.3f} B{:.3f} F{:.0f}", 
+                                         x, y, z, a, b, speed_mm_m);
     std::string acel_gcode = std::format("M204 S{:.0f}", acel_mm_s_2);
 
     send_gcode(acel_gcode);
@@ -39,9 +41,9 @@ int main() {
 
     bool keep_running = true;
     while(keep_running) {
-        blocking_move_deg(0, 90, 360, 200, 100);
+        blocking_move_deg(720, 720, 720, 720, 720, 200, 100);
         usleep(500000);
-        blocking_move_deg(0, 0, 0, 200, 100);
+        blocking_move_deg(0, 0, 0, 0, 0, 200, 100);
         usleep(500000);
         if (check_for_quit()) {
             cout << "\n'q' pressed. Exiting loop." << endl;
